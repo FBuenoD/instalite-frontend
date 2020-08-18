@@ -1,5 +1,23 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+  <v-container>
+    <v-row class="text-center">
+      <v-col cols="12">
+        <v-img :src="require('../assets/logo.png')" class="my-3" contain height="500" />
+      </v-col>
+      <v-col class="mb-4">
+        <h1 class="display-2 font-weight-bold mb-3">InstaLite</h1>
+        <h3>Links Úteis</h3>
+        <ul>
+          <li>
+            <a
+              href="https://documenter.getpostman.com/view/8892843/T1LQhmR4?version=latest"
+              target="_blank"
+              rel="noopener"
+            >Documentação da API</a>
+          </li>
+        </ul>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
+

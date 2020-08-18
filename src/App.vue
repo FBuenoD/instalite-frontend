@@ -25,7 +25,7 @@
       </v-container>
     </v-main>
 
-    <v-footer app>
+    <v-footer app class="justify-center">
       <span>&copy; 2020 | InstaLite</span>
     </v-footer>
   </v-app>
