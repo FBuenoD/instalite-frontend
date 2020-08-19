@@ -13,6 +13,7 @@
     "core-js": "^3.6.5",
     "git": "^0.1.5",
     "vue": "^2.6.11",
+    "vue-loading-overlay": "^3.3.3",
     "vue-router": "^3.2.0",
     "vue-the-mask": "^0.11.1",
     "vuetify": "^2.2.11",

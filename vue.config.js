@@ -1,7 +1,4 @@
 module.exports = {
-  devServer: {
-    proxy: 'http://instalite-backend.herokuapp.com/',
-  },
   "transpileDependencies": [
     "vuetify"
   ],
