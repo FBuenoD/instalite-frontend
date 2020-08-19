@@ -1,38 +1,33 @@
 <template>
   <div id="app" v-if="componentKey==2">
     <v-app id="inspire">
-      <v-card class="mx-auto">
-        <v-container fluid>
-          <v-row dense class="justify-center">
-            <v-col v-for="postagem in lPostagem" :key="postagem.id" :cols="12">
-              <v-card>
-                <v-list-item>
-                  <v-list-item-avatar color="grey">
-                    <v-img
-                      :src="'data:image/png;base64,'+postagem.usuario.fotoPerfil"
-                      class="white--text align-end"
-                    ></v-img>
-                  </v-list-item-avatar>
-                  <v-list-item-content>
-                    <v-list-item-title
-                      class="headline"
-                      v-text="postagem.usuario.nome"
-                    ></v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-                <v-img :src="'data:image/png;base64,'+postagem.fotoUrl"></v-img>
-                <v-card-text v-text="postagem.descricao"></v-card-text>
-                <v-card-actions>
-                  <v-btn outlined>
-                    <v-icon>mdi-thumb-up</v-icon>
-                    <v-card-text v-text="postagem.curtidas"></v-card-text>
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
+      <v-container fluid>
+        <v-row dense class="justify-center">
+          <v-col v-for="postagem in lPostagem" :key="postagem.id" :cols="12">
+            <v-card>
+              <v-list-item>
+                <v-list-item-avatar color="grey">
+                  <v-img
+                    :src="'data:image/png;base64,'+postagem.usuario.fotoPerfil"
+                    class="white--text align-end"
+                  ></v-img>
+                </v-list-item-avatar>
+                <v-list-item-content>
+                  <v-list-item-title class="headline" v-text="postagem.usuario.nome"></v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+              <v-img :src="'data:image/png;base64,'+postagem.fotoUrl"></v-img>
+              <v-card-text v-text="postagem.descricao"></v-card-text>
+              <v-card-actions>
+                <v-btn outlined>
+                  <v-icon>mdi-thumb-up</v-icon>
+                  <v-card-text v-text="postagem.curtidas"></v-card-text>
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-app>
   </div>
 </template>
