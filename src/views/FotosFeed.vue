@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <loading
-      :active.sync="isLoading"
-      :is-full-page="fullPage"
-    ></loading>
+    <loading :active.sync="isLoading" :is-full-page="fullPage"></loading>
     <v-app id="inspire" v-if="componentKey==1">
       <v-container fluid>
         <v-row dense class="justify-center">
@@ -23,7 +20,7 @@
               <v-img :src="'data:image/png;base64,'+postagem.fotoUrl"></v-img>
               <v-card-text v-text="postagem.descricao"></v-card-text>
               <v-card-actions>
-                <v-btn outlined>
+                <v-btn outlined @click="addCurtida(postagem.id)">
                   <v-icon>mdi-thumb-up</v-icon>
                   <v-card-text v-text="postagem.curtidas"></v-card-text>
                 </v-btn>
@@ -54,6 +51,7 @@ export default {
     componentKey: 0,
     lPostagem: [],
     lUsuario: [],
+    aPostagem: null,
     linkImagem: null,
     nomePerfil: null,
     isLoading: true,
@@ -109,6 +107,21 @@ export default {
         }
       });
       return this.nomePerfil;
+    },
+
+    addCurtida(idPostagem) {
+      for (let index = 0; index < this.lPostagem.length; index++) {
+        const element = this.lPostagem[index];
+        if (element.id == idPostagem) {
+          this.aPostagem = element;
+          this.aPostagem.curtidas = parseFloat(this.aPostagem.curtidas) + parseFloat(1);
+          service
+            .update(this.aPostagem)
+            .then(
+              Object.assign(this.lPostagem[index], this.aPostagem)
+            );
+        }
+      }
     },
   },
 };
