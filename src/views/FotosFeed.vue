@@ -1,9 +1,13 @@
 <template>
-  <div id="app" v-if="componentKey==2">
-    <v-app id="inspire">
+  <div id="app">
+    <loading
+      :active.sync="isLoading"
+      :is-full-page="fullPage"
+    ></loading>
+    <v-app id="inspire" v-if="componentKey==1">
       <v-container fluid>
         <v-row dense class="justify-center">
-          <v-col v-for="postagem in lPostagem" :key="postagem.id" :cols="12">
+          <v-col v-for="postagem in lPostagem" :key="postagem.id" :cols="6">
             <v-card>
               <v-list-item>
                 <v-list-item-avatar color="grey">
@@ -13,7 +17,7 @@
                   ></v-img>
                 </v-list-item-avatar>
                 <v-list-item-content>
-                  <v-list-item-title class="headline" v-text="postagem.usuario.nome"></v-list-item-title>
+                  <v-list-item-subtitle v-text="postagem.usuario.nome"></v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <v-img :src="'data:image/png;base64,'+postagem.fotoUrl"></v-img>
@@ -39,9 +43,12 @@ const service = PostagemService.build();
 import UsuarioService from "../service/domain/UsuarioService";
 const serviceUsuario = UsuarioService.build();
 
+import Loading from "vue-loading-overlay";
+import "vue-loading-overlay/dist/vue-loading.css";
+
 export default {
   name: "Feed",
-  components: {},
+  components: { Loading },
 
   data: () => ({
     componentKey: 0,
@@ -49,11 +56,13 @@ export default {
     lUsuario: [],
     linkImagem: null,
     nomePerfil: null,
+    isLoading: true,
+    fullPage: false,
   }),
 
   created() {
     this.fetchRecords();
-    this.fetchRecordsUsuario();
+    //this.fetchRecordsUsuario();
   },
 
   methods: {
@@ -69,6 +78,7 @@ export default {
       if (Array.isArray(response.rows)) {
         this.lPostagem = response.rows;
         this.componentKey += 1;
+        this.isLoading = false;
         return;
       }
       this.lPostagem = [];
