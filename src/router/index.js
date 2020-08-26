@@ -10,6 +10,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "fotoFeed" */ '../views/FotosFeed.vue')
   },
   {
+    path: '/postagem',
+    name: 'Postar Imagem',
+    component: () => import(/* webpackChunkName: "postagem" */ '../views/Postagem.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

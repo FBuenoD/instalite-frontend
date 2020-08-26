@@ -6,16 +6,7 @@
       </v-col>
       <v-col class="mb-4">
         <h1 class="display-2 font-weight-bold mb-3">InstaLite</h1>
-        <h3>Links Úteis</h3>
-        <ul>
-          <li>
-            <a
-              href="https://documenter.getpostman.com/view/8892843/T1LQhmR4?version=latest"
-              target="_blank"
-              rel="noopener"
-            >Documentação da API</a>
-          </li>
-        </ul>
+        <h3>Anonymous Version</h3>
       </v-col>
     </v-row>
   </v-container>
