@@ -26,7 +26,6 @@
                 </v-btn>
                 <v-btn outlined @click="verComentario(postagem.id)">
                   <v-icon>mdi-message-text</v-icon>
-                  <v-card-text>Ver Comentários</v-card-text>
                 </v-btn>
               </v-card-actions>
             </v-card>
