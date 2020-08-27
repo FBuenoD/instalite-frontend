@@ -65,6 +65,7 @@ export default {
     urlimg: null,
     nomebotao: "Teste",
     isLoading: false,
+    fullPage: false,
     imageconvertida: null,
 
     rulesDescricao: [
@@ -118,46 +119,6 @@ export default {
 
     Preview_image() {
       this.urlimg = URL.createObjectURL(this.imagemPost);
-    },
-
-    converterImagem() {},
-
-    getBase64(file) {
-      var reader = new FileReader();
-      var strBase64;
-
-      reader.readAsDataURL(file);
-      reader.onload = function () {
-        strBase64 = reader.result;
-
-        strBase64 = strBase64.slice(23); //removendo: "data:image/png;base64,"
-        //console.log(strBase64);
-
-        this.newPostagem[0].fotoUrl = strBase64;
-
-        console.log(this.newPostagem[0].fotoUrl);
-
-        //this.salvar;
-        //this.imageconvertida = strBase64;
-
-        /*strBase64 = reader.result;
-          this.imagePreview = reader.result as string;
-
-        if (strBase64.indexOf("png") > -1) {
-          strBase64 = strBase64.slice(22); //removendo: "data:image/png;base64,"
-        } else if (strBase64.indexOf("jpeg") > -1) {
-          strBase64 = strBase64.slice(23); //removendo: "data:image/jpeg;base64,"
-        } else {
-          alert("A imagem não é válida!");
-        }
-        this.newPostagem[0].fotoUrl = strBase64;
-        this.salvar;*/
-
-        //.bind(this) Passando Contexto "this" para poder pegar objetos de fora da função anonima
-      }.bind(this);
-      reader.onerror = function (error) {
-        console.log("Error: ", error);
-      };
     },
 
     enviarPostagem() {
@@ -220,7 +181,7 @@ export default {
     },
 
     async salvar() {
-      service.create(this.newPostagem[0]);
+      await service.create(this.newPostagem[0]);
     },
 
     clear() {
