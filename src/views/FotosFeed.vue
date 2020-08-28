@@ -4,7 +4,7 @@
     <v-app id="inspire" v-if="componentKey==1">
       <v-container fluid>
         <v-row dense class="justify-center">
-          <v-col v-for="postagem in lPostagem" :key="postagem.id" :cols="6">
+          <v-col v-for="postagem in lPostagem" :key="postagem.id" :cols="6.5">
             <v-card>
               <v-list-item>
                 <v-list-item-avatar color="grey">
@@ -65,7 +65,7 @@
                   :disabled="!valid"
                   block
                   color="primary"
-                  @click="enviarComentario(lComentario[0].postagem.id)"
+                  @click="enviarComentario(aPostagemIdAtual)"
                 >Enviar Comentário</v-btn>
               </v-col>
             </v-card>
@@ -94,6 +94,7 @@ export default {
     componentKey: 0,
     lPostagem: [],
     lComentario: [],
+    aPostagemIdAtual: null,
     aPostagem: null,
     linkImagem: null,
     nomePerfil: null,
@@ -185,6 +186,7 @@ export default {
 
     verComentario(id) {
       this.dialog = true;
+      this.aPostagemIdAtual = id;
       this.buscarComentarios(id);
     },
 
